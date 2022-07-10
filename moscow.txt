@@ -1,0 +1,26 @@
+MUST
+1. Basic flow
+2. Error management
+
+SHOULD
+1. Show the stats of the selected pokemon so the user can make a wise decision
+2. Get multiple random Pokemon and let the player decide which one they want to use
+3. Have a way to remove the loser's card and add it to the winner's deck
+4. Keep a score
+5. Have game control options such as Play again / Quit Game that way it doesn't end after 1 match
+
+COULD
+1. Have cache control to comply with the rules of Fair Use Policy although we are using a random number to fetch data this is probably not so useful
+
+WON'T
+1. Choose a different set of cards (different api)
+2. Play against another human player
+3. Have a visual interface with kTinker or similar
+
+WOULD
+1. Choose who to play against (Ash, Misty, etc.)
+2. Add multiplayer functionality
+3. Tournaments
+4. Leaders board
+5. LANGS
+6. GUI
