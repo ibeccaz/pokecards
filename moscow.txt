@@ -1,6 +1,6 @@
 MUST
 1. Basic flow
-2. Error management
+2. Error handling
 
 SHOULD
 1. Show the stats of the selected pokemon so the user can make a wise decision

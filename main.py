@@ -83,30 +83,44 @@ def run():
   #   comp_deck[random_index] = get_pokemon(random_index)
   
   is_player_turn = True
-  
+  stats = ['id','height','weight']
+  stat_choice = None
   while len(player_deck) > 0 and len(comp_deck) > 0:
 
     if is_player_turn:
       # Ask the user which pokemon should they use
-      print("\n These are your cards:")
+      player_pokemon = None
+      print("\nThese are your cards:")
       for card in player_deck:
         print(format_stats(card))
-      
-      player_pokemon_choice = input('Which pokemon do you want to use? Enter the name: ')    
         
-      player_pokemon = [card for card in player_deck if card['name'] == player_pokemon_choice][0]
+      while not player_pokemon:
+        try:
+          player_pokemon_choice = input('Which pokemon do you want to use? Enter the name: ')              
+          player_pokemon = [card for card in player_deck if card['name'] == player_pokemon_choice][0]
+        except:
+          print("\nIt seems you don't have that pokemon, try again.")
+        
       print(format_stats(player_pokemon))      
-
-      # Ask the user which stat they want to use (id, height or weight)
-      stat_choice = input('Which stat do you want to use? (id, height, weight) ')
-      print("\nPlayer: {} I choose you!".format(player_pokemon['name']))
       
+      while not stat_choice:
+        # Ask the user which stat they want to use (id, height or weight)
+        print("Available stats:\n0. ID\n1. Height\n2. Weight")      
+        stat_choice_input = input("Which stat do you want to use? Enter the index: ")
+        try:
+          stat_choice = stats[int(stat_choice_input)]
+        except:
+          print("\nIt seems you got that wrong, enter the index of the stat you want to use.")
+      
+      print("\nPlayer: {} I choose you!".format(player_pokemon['name']))
+      # comp pokemon
       comp_pokemon = comp_deck.pop()
       print("\nComp: {} I choose you!".format(comp_pokemon['name']))
+      
     else:
       comp_pokemon = comp_deck.pop()
       print("\nComp: {} I choose you!".format(comp_pokemon['name']))
-      stat_choice = random.choice(['id','height','weight'])
+      stat_choice = random.choice(stats)
       
       # Ask the user which pokemon should they use
       print("\nThese are your cards:")
@@ -134,6 +148,8 @@ def run():
       print("\nYou lose!")
     else:
       print("\nDraw!")
+      
+    stat_choice = None
     
     # Dev
     # print("player cards \n")
