@@ -85,11 +85,11 @@ def run():
   is_player_turn = True
   stats = ['id','height','weight']
   stat_choice = None
+  player_pokemon = None
   while len(player_deck) > 0 and len(comp_deck) > 0:
 
     if is_player_turn:
-      # Ask the user which pokemon should they use
-      player_pokemon = None
+      # Ask the user which pokemon should they use      
       print("\nThese are your cards:")
       for card in player_deck:
         print(format_stats(card))
@@ -127,9 +127,13 @@ def run():
       for card in player_deck:
         print(format_stats(card))
       
-      player_pokemon_choice = input('Which pokemon do you want to use? Enter the name: ')    
-        
-      player_pokemon = [card for card in player_deck if card['name'] == player_pokemon_choice][0]
+      while not player_pokemon:
+        try:
+          player_pokemon_choice = input('Which pokemon do you want to use? Enter the name: ')              
+          player_pokemon = [card for card in player_deck if card['name'] == player_pokemon_choice][0]
+        except:
+          print("\nIt seems you don't have that pokemon, try again.")
+          
       print(format_stats(player_pokemon))
       print("\nPlayer: {} I choose you!".format(player_pokemon['name']))
 
@@ -150,6 +154,7 @@ def run():
       print("\nDraw!")
       
     stat_choice = None
+    player_pokemon = None
     
     # Dev
     # print("player cards \n")
