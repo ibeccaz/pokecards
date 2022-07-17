@@ -156,9 +156,9 @@ def run():
     stat_choice = None
     player_pokemon = None
     
-    play_again = input('Play again? y/N: ')
-    if play_again.lower() == "y":
-      run()
+  play_again = input('Play again? y/N: ')
+  if play_again.lower() == "y":
+    run()
     
     # Dev
     # print("player cards \n")
