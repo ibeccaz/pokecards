@@ -63,24 +63,26 @@ def get_pokemon(id):
 def run():
   # Get a random Pokemon for the player and another for their opponent
   # Get multiple random Pokemon and let the player decide which one they want to use
-  # Dev
-  player_deck_dev = [95,67,116]
   player_deck = []
-  comp_deck_dev = [98,60,58]
   comp_deck = []
-  for i in player_deck_dev:
-    player_deck.append(get_pokemon((i)))
   
-  for i in comp_deck_dev:
-    comp_deck.append(get_pokemon((i)))
+  # Dev
+  # player_deck_dev = [95,67,116]
+  # comp_deck_dev = [98,60,58]
   
-  # for n in range(3):
-  #   random_index = random.randint(1, 151)
-  #   player_deck[random_index] = get_pokemon(random_index)
+  # for i in player_deck_dev:
+  #   player_deck.append(get_pokemon((i)))
   
-  # for n in range(3):
-  #   random_index = random.randint(1, 151)
-  #   comp_deck[random_index] = get_pokemon(random_index)
+  # for i in comp_deck_dev:
+  #   comp_deck.append(get_pokemon((i)))
+  
+  for n in range(3):
+    random_index = random.randint(1, 151)
+    player_deck.append(get_pokemon(random_index))
+  
+  for n in range(3):
+    random_index = random.randint(1, 151)
+    comp_deck.append(get_pokemon(random_index))
   
   is_player_turn = True
   stats = ['id','height','weight']
@@ -95,8 +97,8 @@ def run():
         print(format_stats(card))
         
       while not player_pokemon:
+        player_pokemon_choice = input('Which pokemon do you want to use? Enter the name: ')              
         try:
-          player_pokemon_choice = input('Which pokemon do you want to use? Enter the name: ')              
           player_pokemon = [card for card in player_deck if card['name'] == player_pokemon_choice][0]
         except:
           print("\nIt seems you don't have that pokemon, try again.")
@@ -128,8 +130,8 @@ def run():
         print(format_stats(card))
       
       while not player_pokemon:
+        player_pokemon_choice = input('Which pokemon do you want to use? Enter the name: ')              
         try:
-          player_pokemon_choice = input('Which pokemon do you want to use? Enter the name: ')              
           player_pokemon = [card for card in player_deck if card['name'] == player_pokemon_choice][0]
         except:
           print("\nIt seems you don't have that pokemon, try again.")
