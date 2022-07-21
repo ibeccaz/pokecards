@@ -44,7 +44,7 @@ def pprint_line(text):
   width = len(text)+10
   frame = "~"
   message = frame*width+"\n"
-  message += frame+" "+text.upper()+" ".ljust( width - (len(text)+10) )
+  message += frame+" "+text.upper()+" ".ljust( width - (len(text)+3) )
   message += frame+"\n"
   message += frame*width+"\n"
   print(message)
@@ -185,11 +185,10 @@ def run():
     stat_choice = None
     player_pokemon = None
     
-  play_again = input('~ Play again? y/N: ')
-  
   pprint_line("Player final score: {}".format(player_score))
   pprint_line("Comp final score: {}".format(comp_score))
   
+  play_again = input('~ Play again? y/N: ')
   if play_again.lower() == "y":
     run()
     
