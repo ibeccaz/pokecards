@@ -128,17 +128,17 @@ def run():
         except:
           print("\n~ It seems you got that wrong, enter the index of the stat you want to use.")
       
-      print("\n* Player: {} I choose you!".format(player_pokemon['name']))
+      print("\n* Player: {} I choose you!".format(player_pokemon['name'].upper()))
       # comp pokemon
       comp_pokemon = comp_deck.pop()
-      print("\n# Comp: {} I choose you!".format(comp_pokemon['name'])+"\n")
+      print("\n# Comp: {} I choose you!".format(comp_pokemon['name'].upper())+"\n")
       
       pprint_line("*{} vs. #{}".format(player_pokemon['name'],comp_pokemon['name']))
       
     else:
       comp_pokemon = comp_deck.pop()
       stat_choice = random.choice(stats)
-      print("\n# Comp: {} I choose you! ({})".format(comp_pokemon['name'], stat_choice))
+      print("\n# Comp: {} I choose you! ({})".format(comp_pokemon['name'].upper(), stat_choice))
       
       sleep(2)
       # Ask the user which pokemon should they use
@@ -154,7 +154,7 @@ def run():
           print("\n~ It seems you don't have that pokemon, try again.")
           
       # print(format_stats(player_pokemon))
-      print("\n* Player: {} I choose you!".format(player_pokemon['name'])+"\n")
+      print("\n* Player: {} I choose you!".format(player_pokemon['name'].upper())+"\n")
       
       pprint_line(" #{} vs. * {}".format(comp_pokemon['name'],player_pokemon['name']))
 
