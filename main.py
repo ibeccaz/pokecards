@@ -140,6 +140,7 @@ def run():
       stat_choice = random.choice(stats)
       print("\n# Comp: {} I choose you! ({})".format(comp_pokemon['name'], stat_choice))
       
+      sleep(2)
       # Ask the user which pokemon should they use
       print("\n~ These are your cards:")
       for card in player_deck:
@@ -178,8 +179,10 @@ def run():
       
       pprint_line("You lose!")
     else:
+      # because by default we popped the card from the comp's deck we need to return it in case of a draw
+      comp_deck.insert(0,comp_pokemon)
       pprint_line("Draw!")
-      
+    
     sleep(2)
       
     stat_choice = None
