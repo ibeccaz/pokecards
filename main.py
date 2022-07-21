@@ -164,12 +164,18 @@ def run():
     if player > comp:
       is_player_turn = True
       player_deck.insert(0,comp_pokemon)
+      
+      player_score += player_pokemon[stat_choice] - comp_pokemon[stat_choice]
+      
       pprint_line("You win!")
     elif player < comp:
       is_player_turn = False
       comp_deck.insert(0,comp_pokemon)
       comp_deck.insert(1,player_pokemon)
       player_deck.pop((player_deck.index(player_pokemon)))
+      
+      comp_score += comp_pokemon[stat_choice] - player_pokemon[stat_choice]
+      
       pprint_line("You lose!")
     else:
       pprint_line("Draw!")
@@ -180,6 +186,10 @@ def run():
     player_pokemon = None
     
   play_again = input('~ Play again? y/N: ')
+  
+  pprint_line("Player final score: {}".format(player_score))
+  pprint_line("Comp final score: {}".format(comp_score))
+  
   if play_again.lower() == "y":
     run()
     
