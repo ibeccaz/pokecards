@@ -24,3 +24,4 @@ WOULD
 4. Leaders board
 5. LANGS
 6. GUI
+7. Use the right stats, attacks, moves, damage values, etc.
