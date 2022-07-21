@@ -13,7 +13,6 @@ def get_cached(filename):
     with open(filename, 'r') as cached:
       result = cached.read()
       try:
-        # print("From cache")
         result = json.loads(result)
       except:
         return result
@@ -115,12 +114,10 @@ def run():
         try:
           player_pokemon = [card for card in player_deck if card['name'].lower() == player_pokemon_choice.lower()][0]
         except:
-          print("\n~ It seems you don't have that pokemon, try again.")
-        
-      # print(format_stats(player_pokemon))      
+          print("\n~ It seems you don't have that pokemon, try again.") 
       
+      # Ask the user which stat they want to use (id, height or weight)
       while not stat_choice:
-        # Ask the user which stat they want to use (id, height or weight)
         print("~ Available stats:\n0. ID\n1. Height\n2. Weight")      
         stat_choice_input = input("\nWhich stat do you want to use? Enter the index: ")
         try:
@@ -129,7 +126,8 @@ def run():
           print("\n~ It seems you got that wrong, enter the index of the stat you want to use.")
       
       print("\n* Player: {} I choose you!".format(player_pokemon['name'].upper()))
-      # comp pokemon
+      
+      # select a pokemon for the computer
       comp_pokemon = comp_deck.pop()
       print("\n# Comp: {} I choose you!".format(comp_pokemon['name'].upper())+"\n")
       
@@ -153,7 +151,6 @@ def run():
         except:
           print("\n~ It seems you don't have that pokemon, try again.")
           
-      # print(format_stats(player_pokemon))
       print("\n* Player: {} I choose you!".format(player_pokemon['name'].upper())+"\n")
       
       pprint_line(" #{} vs. * {}".format(comp_pokemon['name'],player_pokemon['name']))
@@ -169,6 +166,7 @@ def run():
       player_score += player_pokemon[stat_choice] - comp_pokemon[stat_choice]
       
       pprint_line("You win!")
+    
     elif player < comp:
       is_player_turn = False
       comp_deck.insert(0,comp_pokemon)
@@ -183,8 +181,10 @@ def run():
       comp_deck.insert(0,comp_pokemon)
       pprint_line("Draw!")
     
+    # we wait 2 seconds to give the user time to read the output
     sleep(2)
-      
+    
+    # reset these values so the user gets asked again in the next iteration
     stat_choice = None
     player_pokemon = None
     
@@ -195,10 +195,4 @@ def run():
   if play_again.lower() == "y":
     run()
     
-    # Dev
-    # print("player cards \n")
-    # print([ (v['name']) for v in player_deck ])
-    # print("comps cards \n")
-    # print([ (v['name']) for v in comp_deck ])
-
 run()
