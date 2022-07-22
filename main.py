@@ -79,22 +79,22 @@ def run():
   comp_score = 0
   
   # Dev
-  player_deck_dev = [95,67,116]
-  comp_deck_dev = [98,60,58]
+  # player_deck_dev = [95,67,116]
+  # comp_deck_dev = [98,60,58]
   
-  for i in player_deck_dev:
-    player_deck.append(get_pokemon(i))
+  # for i in player_deck_dev:
+  #   player_deck.append(get_pokemon(i))
   
-  for i in comp_deck_dev:
-    comp_deck.append(get_pokemon(i))
+  # for i in comp_deck_dev:
+  #   comp_deck.append(get_pokemon(i))
   
-  # for n in range(3):
-  #   random_index = random.randint(1, 151)
-  #   player_deck.append(get_pokemon(random_index))
+  for n in range(3):
+    random_index = random.randint(1, 151)
+    player_deck.append(get_pokemon(random_index))
   
-  # for n in range(3):
-  #   random_index = random.randint(1, 151)
-  #   comp_deck.append(get_pokemon(random_index))
+  for n in range(3):
+    random_index = random.randint(1, 151)
+    comp_deck.append(get_pokemon(random_index))
   
   is_player_turn = True
   stats = ['id','height','weight']
